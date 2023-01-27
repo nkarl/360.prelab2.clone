@@ -1,0 +1,32 @@
+In file included from t.c:8:
+wait.c: In function ‘ksleep’:
+wait.c:17:5: warning: implicit declaration of function ‘tswitch’ [-Wimplicit-function-declaration]
+   17 |     tswitch();
+      |     ^~~~~~~
+wait.c: In function ‘kwait’:
+wait.c:70:12: warning: passing argument 1 of ‘ksleep’ makes integer from pointer without a cast [-Wint-conversion]
+   70 |     ksleep(running);
+      |            ^~~~~~~
+      |            |
+      |            PROC * {aka struct proc *}
+wait.c:12:16: note: expected ‘int’ but argument is of type ‘PROC *’ {aka ‘struct proc *’}
+   12 | int ksleep(int event)
+      |            ~~~~^~~~~
+t.c: In function ‘body’:
+t.c:65:49: warning: implicit declaration of function ‘ps’ [-Wimplicit-function-declaration]
+   65 |         if       ( !strcmp(command, "ps"     )) ps()           ;
+      |                                                 ^~
+t.c:66:49: warning: implicit declaration of function ‘kfork’ [-Wimplicit-function-declaration]
+   66 |         else if  ( !strcmp(command, "fork"   )) kfork(body, 1) ;
+      |                                                 ^~~~~
+t.c: In function ‘main’:
+t.c:113:14: warning: passing argument 1 of ‘kfork’ from incompatible pointer type [-Wincompatible-pointer-types]
+  113 |     kfork  ( body, 1)                                ;
+      |              ^~~~
+      |              |
+      |              int (*)()
+t.c:76:16: note: expected ‘int *’ but argument is of type ‘int (*)()’
+   76 | int kfork(int(*func), int priority) {
+      |           ~~~~~^~~~~
+/usr/bin/ld: /tmp/ccpuAUFB.o: warning: relocation against `running' in read-only section `.text'
+/usr/bin/ld: warning: creating DT_TEXTREL in a PIE
